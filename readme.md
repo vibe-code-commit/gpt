@@ -49,6 +49,7 @@ Downstream layers consume **only** validated footprints that satisfy the confirm
 - **Lifecycle:** `state` (New/Unmitigated/Touched/Filled), `state_updated_at`.
 - **IRR Inputs:** `ob_price`, `next_swing_price`, `liquidity_pool_id`, `mss_tf`.
 - **HUD Format:** pre-rendered string for the glanceable HUD row.
+- **Schema:** see `schemas/footprint.schema.json` for the canonical record contract.
 
 Example (single emitted footprint record shape):
 
@@ -89,6 +90,10 @@ Example (single emitted footprint record shape):
 - **Three-Candle Gate:** the footprint emits only after the third candle in the 3-bar sequence closes.
 - **ATR Attachment:** ATR is computed and attached on the same timeframe as the emitted bar.
 - **Deterministic Rounding:** prices and ratios are rounded consistently per instrument tick size to avoid replay divergence.
+
+## Groundwork Artifacts
+- `docs/groundwork.md` defines baseline deliverables, lifecycle expectations, and HUD contract.
+- `schemas/footprint.schema.json` provides the JSON Schema for emitted footprint records.
 
 ## State Machine (Deterministic)
 - **New → Unmitigated:** footprint recorded and awaiting first touch.
